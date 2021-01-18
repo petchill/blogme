@@ -1,0 +1,11 @@
+development:
+  name: blogme-api
+  host: http://localhost:5000
+  port: 5000
+  mongodb:
+    url: mongodb+srv://Petchill:pe111333@youpin-0iyxk.gcp.mongodb.net/blogme
+    options: 
+      useNewUrlParser: true
+      useUnifiedTopology: true
+      useCreateIndex: true
+      useFindAndModify: false
