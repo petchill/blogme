@@ -1,0 +1,31 @@
+.navbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  background: #fbfbfd;
+  justify-content: center;
+  display: flex;
+}
+.navTopic {
+  margin: auto 0;
+  font-size: 20px;
+  padding: 0 20px;
+  font-family: Roboto;
+  color: #777777;
+}
+.navTopic:hover {
+  color: #682954;
+}
+.logoName {
+  font-family: Lobster;
+  font-size: 36px;
+  color: #682954;
+  margin: auto 0;
+  margin-right: 100px;
+}
+
+.searchBar {
+  margin: auto 0;
+  margin-right: 50px;
+}

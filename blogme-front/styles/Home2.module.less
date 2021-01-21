@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Lobster';
+  src: local('Lobster'), url('/fonts/Lobster-Regular.ttf') format('truetype');
+}
+
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  background-color: #97edaa;
+  width: 100px;
+  height: 100px;
+}
+
+.centerText {
+  font-family: Lobster;
+  font-size: 100px;
+  color: #37447E;
+  text-align: center;
+  font-weight: normal;
+}
+
+.homeMain {
+  position: relative
+}
+
+.backgroudWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+.backgroundLeft {
+  z-index: -1;
+  position: absolute;
+  left: 0px;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.backgroundRight {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  max-width: 100vw;
+  max-height: 100vh;
+}
