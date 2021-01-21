@@ -6,3 +6,5 @@ if (process.env.NODE_ENV !== "development") {
 }
 const config = yenv(envPath, {env: process.env.NODE_ENV });
 export default config;
+
+//TODO: set config interface
