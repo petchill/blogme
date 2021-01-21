@@ -1,2 +1,4 @@
 node_modules
 dist
+config/development.yml
+config/production.yml
