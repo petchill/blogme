@@ -14,8 +14,12 @@
           ]
       },
       "experimentalDecorators": true,
+      "skipLibCheck": true
   },
   "include": [
       "src/**/*"
+  ],
+  "files": [
+      "index.d.ts",
   ]
 }

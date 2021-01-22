@@ -1,10 +1,11 @@
 import { string } from "joi";
 import mongoose, { Schema, Document } from "mongoose";
+import { IUser } from "./user.model";
 
 export interface IRoom extends Document {
   topic: string;
   content: string;
-  like: number;
+  liked_user: IUser["_id"][];
   view: number;
   tags: string[];
 }
@@ -13,7 +14,7 @@ const RoomSchema: Schema = new Schema(
   {
     topic: { type: String, required: true },
     content: { type: String },
-    like: { type: Number, default: 0 },
+    liked_user: { type: [Schema.Types.ObjectId], ref: "User", defaut: [] },
     view: { type: Number, default: 0 },
     tags: { type: [String], defaut: [] },
   },

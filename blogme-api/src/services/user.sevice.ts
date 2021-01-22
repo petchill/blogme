@@ -81,6 +81,7 @@ class UserService {
   };
 
   private createUser = async (req: Request, res: Response) => {
+    // TODO: gen username is not exist
     const { validatedError, validatedData } = this.validatePostSchema(req.body);
     if (validatedError) {
       const errorMessages = validatedError.details

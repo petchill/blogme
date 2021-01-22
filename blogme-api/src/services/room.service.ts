@@ -3,6 +3,8 @@ import { Router, Request, Response } from "express";
 import roomModel, { IRoom } from "../models/room.model";
 import { errorLog } from "../utils/logger";
 import { IRoomPostBody, IRoomPatchBody } from "../interfaces/IRoom";
+import { auth, IUserToken } from "../middlewares/auth";
+import { Mongoose, Schema } from "mongoose";
 
 class RoomService {
   public router: Router = Router();
@@ -14,7 +16,7 @@ class RoomService {
     this.router.get("/", this.getAllRooms);
     this.router.post("/", this.createRoom);
     this.router.get("/view/:id", this.viewRoom);
-    this.router.get("/like/:id", this.likeRoom);
+    this.router.get("/like/:id", auth, this.likeRoom);
     this.router.get("/:id", this.getRoomById);
     this.router.patch("/:id", this.updateRoom);
     this.router.delete("/:id", this.deleteRoom);
@@ -37,6 +39,7 @@ class RoomService {
   };
 
   private getRoomById = async (req: Request, res: Response) => {
+    //TODO: add logic if already like will cannot like
     const roomId = req.params.id;
     try {
       const response = await roomModel.findOne({ _id: roomId });
@@ -143,13 +146,57 @@ class RoomService {
     }
   };
 
+  private checkIsLiked(
+    roomData: IRoom,
+    userId: Schema.Types.ObjectId
+  ): boolean {
+    return roomData.liked_user.includes(userId);
+  }
+  // TODO: dislike
   private likeRoom = async (req: Request, res: Response) => {
+    const userData: IUserToken = req.user;
     const roomId = req.params.id;
+    let roomData: IRoom;
+    try {
+      roomData = roomModel.findOne({ _id: roomId });
+    } catch (error) {
+      errorLog(500, error, "Database: finding room is fail");
+    }
+    const userAlreadyliked = this.checkIsLiked(roomData, userData._id);
+    if (userAlreadyliked) {
+      // unlike
+      try {
+        const roomData = await roomModel.findOneAndUpdate(
+          { _id: roomId },
+          {
+            $pull: { liked_user: userData._id },
+          }
+        );
+        const response = roomData;
+        if (!response) {
+          res.status(204);
+          res.json({
+            ok: true,
+            status: 204,
+            data: { message: "this room is not existing" },
+          });
+        }
+        res.status(200);
+        res.json({
+          ok: true,
+          status: 200,
+          data: response,
+        });
+      } catch (error) {
+        errorLog(500, error, "Database: updating room is fail");
+      }
+    }
+    // liked
     try {
       const roomData = await roomModel.findOneAndUpdate(
         { _id: roomId },
         {
-          $inc: { like: 1 },
+          $push: { liked_user: userData._id },
         }
       );
       const response = roomData;
