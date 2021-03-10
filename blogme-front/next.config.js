@@ -17,7 +17,8 @@ module.exports = withLess(withSass(withCSS({
     API_URL: process.env.API_URL,
     BASE_URL: process.env.BASE_URL
   },
-  distDir: 'build',
+  trailingSlash: true,
+  // distDir: 'build',
   // cssModules: true
 })))
 

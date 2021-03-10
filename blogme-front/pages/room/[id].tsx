@@ -59,7 +59,7 @@ function RoomDetail(props) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getInitialProps(context) {
   const { id } = context.query
   console.log("id => ", id)
   return {
