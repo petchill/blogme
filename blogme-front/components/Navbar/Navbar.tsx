@@ -1,4 +1,4 @@
-import { observer, useObserver } from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite'
 import { useState } from "react"
 // import { useObserver } from "mobx-react"
 import { Input, AutoComplete } from "antd";
@@ -8,7 +8,6 @@ import { NavbarService } from "../../services/NavbarService"
 import { observable, action, makeAutoObservable } from "mobx";
 
 function Header(props) {
-  console.log(props.name)
   const [viewModel] = useState(new NavbarService())
 
   return (

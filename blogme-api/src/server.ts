@@ -1,4 +1,5 @@
 import "express-async-errors"
+import "./IGlobal"
 import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
 import compress from "compression";
@@ -7,8 +8,21 @@ import mongoose from "./mongoose";
 import ServiceRouter from "./serviceRouter";
 import errorHandler from "./middlewares/errorHandler";
 import userModel from "./models/user.model";
-
+// import { Schema } from "mongoose";
+// interface IUserToken { 
+//   _id: Schema.Types.ObjectId;
+//   email: string;
+// }
+// declare global{
+//   namespace Express {
+//    export interface Request {
+//       user: IUserToken
+//    }
+//  }
+// }
 const app: Application = express();
+
+const port = process.env.PORT || 5000;
 
 mongoose();
 
@@ -31,8 +45,8 @@ app.use("/", new ServiceRouter().router);
 
 app.use(errorHandler);
 
-app.listen(config.port || 5000, () => {
-  console.log("listen on port 5000");
+app.listen(port, () => {
+  console.log("listen on port ", port);
 });
 
 process.on("uncaughtException", function (err) {

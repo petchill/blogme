@@ -6,6 +6,7 @@
   background: #fbfbfd;
   justify-content: center;
   display: flex;
+  z-index: 1;
 }
 .navTopic {
   margin: auto 0;

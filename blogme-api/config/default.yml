@@ -9,3 +9,9 @@ development:
       useUnifiedTopology: true
       useCreateIndex: true
       useFindAndModify: false
+  jwt: 
+    secret: jwt secret
+    options:
+      algorithm: HS256
+      audience: http://localhost:5000
+      expiresIn: 2h

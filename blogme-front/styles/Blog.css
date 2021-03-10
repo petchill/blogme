@@ -1,0 +1,29 @@
+.blogMain {
+  background-color: #ebfbef;
+  height: 100vh;
+}
+
+.blogMain body { 
+  background-color: #eafbec;
+}
+
+.blogMainContent {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.blogHeaderText {
+  width:  16px;
+}
+
+.blog {
+  width: 100%;
+}
+
+.blogTable {
+  width: 60%;
+  margin: 0 auto;
+}

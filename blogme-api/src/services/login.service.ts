@@ -19,7 +19,7 @@ class LoginService {
   }
 
   private initilizeService() {
-    this.router.post("/", this.postLogin)
+    this.router.post("/", this.postLogin);
   }
 
   private validatePostSchema = (
@@ -67,22 +67,24 @@ class LoginService {
       email: userData.email,
     };
     const jwtConfig = config.jwt;
-    try{
+    try {
       const accessToken = jwt.sign(
-      { user: jwtPayload },
+        { user: jwtPayload },
         jwtConfig.secret,
         jwtConfig.options
       );
       res.status(200),
-      res.json({
-        ok: true,
-        status: 200,
-        data: {
-          access_token: accessToken
-        }
-      })
+        res.json({
+          ok: true,
+          status: 200,
+          data: {
+            access_token: accessToken,
+          },
+        });
     } catch (error) {
-      errorLog(500, "Jwt error")
+      errorLog(500, "Jwt error");
     }
   };
 }
+
+export default LoginService;

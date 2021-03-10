@@ -13,5 +13,11 @@ module.exports = withLess(withSass(withCSS({
   lessLoaderOptions: {
     javascriptEnabled: true
   },
+  env: {
+    API_URL: process.env.API_URL,
+    BASE_URL: process.env.BASE_URL
+  },
+  distDir: 'build',
   // cssModules: true
 })))
+

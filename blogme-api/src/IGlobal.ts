@@ -3,7 +3,7 @@ interface IUserToken {
   _id: Schema.Types.ObjectId;
   email: string;
 }
-export declare global{
+declare global{
   namespace Express {
    export interface Request {
       user: IUserToken

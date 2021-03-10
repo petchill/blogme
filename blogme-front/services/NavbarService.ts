@@ -38,9 +38,7 @@ export class NavbarService {
 
   @action
   public setSearchValue(value: string) {
-    console.log('value => ', value);
     this.searchValue = value;
-    console.log('search value => ', this.searchValue);
   }
 
   @action

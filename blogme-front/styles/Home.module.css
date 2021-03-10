@@ -2,12 +2,43 @@
   font-family: "Lobster";
   src: local("Lobster"), url("/fonts/Lobster-Regular.ttf") format("truetype");
 }
+/* 
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }  
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }  
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+} */
 
 .first {
   z-index: -1;
   display: flex;
   align-items: center;
   background: #97edaa;
+  height: 100vh;
+}
+
+.backgroundFirst {
+  background-color: red;
   height: 100vh;
 }
 
@@ -37,6 +68,20 @@
 
 .homeMain {
   position: relative;
+}
+
+.blogButton {
+  margin-top: 20px;
+  font-family: Lobster;
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 15%;
+  background-color: #d7f8db;
+}
+
+.blogButton:hover {
+  background-color: #97edaa;
+  color: #682954;
 }
 
 .backgroudWrapper {
@@ -105,14 +150,71 @@
 
 .signWrapper {
   width: 100%;
+  height: calc(100vh - 260px);
   background: #d7f8db;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signContainer {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.signButton {
+  position: absolute;
+  margin: 0 10px;
+  padding: 20px;
+  font-size: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 1s;
+  font-family: Lobster;
+}
+
+.signButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.signButton:hover {
+  background-color: #a7efb7;
+  font-size: 60px;
+  color: #682954;
+  transform: scale(2, 2);
+  -webkit-transform: scale(1.3, 1.3);
+  -moz-transform: scale(1.3, 1.3);
+}
+
+.contentHeader {
+  font-size: 100px;
+  text-align: center;
+  font-family: Lobster;
+  color: #682954;
+}
+
+.signHeader {
+  margin-top: 100px;
+}
+
+.footer {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.footerHeaderText {
+  margin-left: 10px;
+}
+
+.contactList {
   display: flex;
   flex-direction: column;
 }
 
-.signHeader {
-  font-size: 80px;
-  text-align: center;
-  font-family: Lobster;
-  color: #682954;
+.contactLogo {
+  width: 50px;
 }

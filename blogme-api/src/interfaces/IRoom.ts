@@ -1,10 +1,16 @@
+import { Schema } from "mongoose";
+
 export class IRoomPostBody{
   topic: string;
-  content?: string;
+  description?: string;
   tags?: string[];
 }
 
+export class IRoomCreate extends IRoomPostBody{
+  owner: Schema.Types.ObjectId
+}
+
 export class IRoomPatchBody{
-  content?: string;
+  decription?: string;
   tags?: string[];
 }
